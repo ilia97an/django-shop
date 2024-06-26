@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Shop</h1>
+  <p>Welcome to shop, a website developed by <em>Mozilla, lhelium and stackoverflow, geeksforgeeks, medium, djangoproject, w3schools, DevCommunity, StudyGyaan</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The shop has the following record counts:</p>
+  <ul>
+    <li><strong>GPUs:</strong> {{ num_gpu }}</li>
+    <li><strong>CPUs:</strong> {{ num_cpu }}</li>
+  </ul>
+{% endblock %}
+

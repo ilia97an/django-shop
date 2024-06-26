@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Список всех заказов:</h1>
+  {% if cart_items %}
+  <ul>
+    {% for item in cart_items %}
+      <li>
+        <a href="{{ item.product.get_absolute_url }}">{{ item.product.fullname }}</a> {{ item.product.price_str }} {{ item.user }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Нет товаров в тележке пользователя.</p>
+  {% endif %}
+{% endblock %}

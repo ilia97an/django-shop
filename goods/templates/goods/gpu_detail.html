@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Name: {{ gpu.fullname }}</h1>
+  
+  <p><strong>Price:</strong> {{ gpu.price_str }}</p>
+  <p><strong>Manufacturer:</strong> <a href={{ gpu.producer.get_absolute_url }}>{{ gpu.producer }}</a></p>
+  
+{% endblock %}

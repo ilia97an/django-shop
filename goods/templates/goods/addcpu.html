@@ -1,0 +1,38 @@
+{% load static %}
+<script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+<!--  -->
+<form action = "" method = "post" enctype="multipart/form-data" id="form">
+    {% csrf_token %}
+    <table>
+      <tbody>
+        <tr>
+          <th><label for="id_name">Name:</label></th>
+          <td>
+            <input type="text" name="name" required="" id="id_name">
+            <br>
+            <span class="helptext">Введите название</span>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="id_price">Price:</label></th>
+          <td>
+            <input type="number" name="price" id="id_price">
+            <br>
+            <span class="helptext">Введите цену</span>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="id_images">Images:</label></th>
+          <td>        
+            <input type="file" name="images" multiple="" accept="image/*" id="id_images">
+            <br>
+            <span class="helptext">Загрузите картинку</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" value="Submit" id="submit">
+</form>
+
+<script src="{% static 'js/addcpu.js' %}"></script>
+

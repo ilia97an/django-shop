@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles_cpu.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>Name: {{ cpu.fullname }}</h1>
+  
+  <p><strong>Price:</strong> {{ cpu.price_str }}</p>
+  <p><strong>Manufacturer:</strong> <a href={{ cpu.producer.get_absolute_url }}>{{ cpu.producer }}</a></p>
+            <h5 class="rating-list">Avg rating:
+                <span class="{% if cpu.average_rating > 0 %} checked {% endif %}">&#x2605 {{cpu.average_rating}}</span>
+                <span class="{% if cpu.average_rating > 1 %} checked {% endif %}">&#x2605</span>
+                <span class="{% if cpu.average_rating > 2 %} checked {% endif %}">&#x2605</span>
+                <span class="{% if cpu.average_rating > 3 %} checked {% endif %}">&#x2605</span>
+                <span class="{% if cpu.average_rating > 4 %} checked {% endif %}">&#x2605</span>
+            </h5>
+            <p></p>
+            <h5 class="button rating-list">
+                <span onclick="rate(5, {{ cpu.pid }})" class="{% if user_rating > 4 %} checked {% endif %}" title="Rate 5">&#x2605 {{ user_rating }}</span>
+                <span onclick="rate(4, {{ cpu.pid }})" class="{% if user_rating > 3 %} checked {% endif %}" title="Rate 4">&#x2605</span>
+                <span onclick="rate(3, {{ cpu.pid }})" class="{% if user_rating > 2 %} checked {% endif %}" title="Rate 3">&#x2605</span>
+                <span onclick="rate(2, {{ cpu.pid }})" class="{% if user_rating > 1 %} checked {% endif %}" title="Rate 2">&#x2605</span>
+                <span onclick="rate(1, {{ cpu.pid }})" class="{% if user_rating > 0 %} checked {% endif %}" title="Rate 1">&#x2605</span>
+            </h5>
+  {% if images %}
+    <div id="image-gallery">
+      <img id="current-image" src="{{ images.0.image.url }}"/>
+      <div id="image-thumbs">
+      {% for img in images %}
+          <img class="thumb" onclick="thumbClick(this)" src="{{ img.image.url }}"/>
+      {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  {% load static %}
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Name: {{ manufacturer.fullname }}</h1>
+  
+  <p><strong>Description:</strong> {{ manufacturer.description }}</p>
+  {% if product_list %}
+    <ul>
+      {% for product in product_list %}
+        <li>
+          <a href="{{ product.get_absolute_url }}">{{ product.fullname }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>В магазине нет товаров, сделанных этим производителем.</p>
+  {% endif %}
+  
+
+{% endblock %}
